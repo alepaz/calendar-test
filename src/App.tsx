@@ -1,7 +1,7 @@
-import { Calendar } from "./Calendar";
+import { CalendarView } from "./CalendarView";
 
 function App() {
-  return <Calendar />;
+  return <CalendarView />;
 }
 
 export default App;

@@ -2,17 +2,16 @@ import { useState } from "react";
 import { monthName } from "../utils/utils";
 import { CalendarHeader } from "../CalendarHeader";
 
-export function Calendar() {
+export function CalendarView() {
   //Date to display
   const [date, setDate] = useState(new Date());
-  // Month to display
-  //   const [month, setMonth] = useState(() => new Date().getMonth());
-  //   // Year to display
-  //   const [year, setYear] = useState(() => new Date().getFullYear());
 
   return (
     <div>
+      {/* Calendar header and controls */}
       <CalendarHeader date={date} setDate={setDate} />
+      {/*Calendar Section*/}
+
     </div>
   );
 }
