@@ -1,0 +1,4 @@
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+}

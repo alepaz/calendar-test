@@ -12,7 +12,7 @@ export function Calendar() {
 
   return (
     <div>
-      <CalendarHeader date={date} />
+      <CalendarHeader date={date} setDate={setDate} />
     </div>
   );
 }
