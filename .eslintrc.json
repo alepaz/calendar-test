@@ -7,7 +7,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["react", "@typescript-eslint", "prettier", "solveiq"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "env": {
     "browser": true,
     "jasmine": true,
@@ -24,10 +24,6 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-function": "off",
     "react/react-in-jsx-scope": "off",
-    "solveiq/data-qatag": "warn",
-    "solveiq/no-empty-data-qatag": "warn",
-    "solveiq/no-expressions-in-data-qatag": "off",
-    "solveiq/data-qatag-must-be-unique": "off",
     "react/display-name": "off"
   },
   "settings": {
