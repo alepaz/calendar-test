@@ -11,7 +11,62 @@ export function Calendar({ date }: CalendarProps) {
     [date.getMonth(), date.getFullYear()]
   );
 
+  const test = new Date(date.getFullYear(), date.getMonth(), 1);
+  console.log(test.getDay());
+
   console.log("daysInMonth", daysInMonth);
+
+  // Index of the first day of the month
+  const dayIndexActualMonth = test.getDay();
+  console.log("dayIndexActualMonth", dayIndexActualMonth);
+
+  // Index of the last day of the month
+  const lastDayIndexActualMonth = new Date(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    0
+  ).getDay();
+
+  console.log("lastDayIndexActualMonth", lastDayIndexActualMonth);
+
+  const days = [];
+
+  const daysInPreviousMonth = useMemo(
+    () => new Date(date.getFullYear(), date.getMonth(), 0).getDate(),
+    [date.getMonth(), date.getFullYear()]
+  );
+  // Array of days of the previous month
+  for (let x = dayIndexActualMonth; x > 0; x -= 1) {
+    console.log("TEST", x);
+    days.push(
+      <div
+        className="day"
+        key={`${date.getMonth()}-${daysInPreviousMonth - x + 1}`}
+      >
+        {daysInPreviousMonth - x + 1}
+      </div>
+    );
+  }
+
+  // Array of days of the current month
+  for (let x = 1; x <= daysInMonth; x += 1) {
+    days.push(
+      <div className="day" key={`${date.getMonth() + 1}-${x}`}>
+        {x}
+      </div>
+    );
+  }
+
+  // Array of days of the next month
+  for (let x = 1; x <= lastDayIndexActualMonth; x += 1) {
+    days.push(
+      <div className="day" key={`${date.getMonth() + 2}-${x}`}>
+        {x}
+      </div>
+    );
+  }
+
+  console.log("days", days);
 
   return (
     <div className="calendarContainer">
@@ -24,50 +79,7 @@ export function Calendar({ date }: CalendarProps) {
         <div>Fri</div>
         <div>Sat</div>
       </div>
-      <div className="days">
-        <div>26</div>
-        <div>27</div>
-        <div>28</div>
-        <div>29</div>
-        <div>30</div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>10</div>
-        <div>11</div>
-        <div>12</div>
-        <div>13</div>
-        <div>14</div>
-        <div>15</div>
-        <div>16</div>
-        <div>17</div>
-        <div>18</div>
-        <div>19</div>
-        <div>20</div>
-        <div>21</div>
-        <div>22</div>
-        <div>23</div>
-        <div>24</div>
-        <div>25</div>
-        <div>26</div>
-        <div>27</div>
-        <div>28</div>
-        <div>29</div>
-        <div>30</div>
-        <div>31</div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-      </div>
+      <div className="days">{days.map((day) => day)}</div>
     </div>
   );
 }
