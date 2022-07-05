@@ -1,4 +1,72 @@
 .calendarHeader {
   display: flex;
   justify-content: space-between;
+  background-color: #14a800;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 16px 24px;
+  border: 2px solid #3c8224;
+}
+
+.calendarHeader-label {
+  display: flex;
+}
+
+.calendarHeader--month {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.calendarHeader--year {
+  font-size: 24px;
+  font-weight: normal;
+  color: #fff;
+  margin-left: 4px;
+}
+
+.calendarHeader-buttonContainer {
+  display: flex;
+  align-items: center;
+}
+
+.calendarHeader-button {
+  width: 52px;
+  margin: auto;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #13544e;
+  padding: 8px 16px;
+  color: #14a800;
+}
+
+.calendarHeader-button--center {
+  height: 40px;
+  width: 100px;
+  margin: auto;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 16px;
+  border: 1px solid #13544e;
+  padding: 8px 16px;
+  color: #14a800;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.calendarHeader-button:hover {
+  border: 1px solid #fff;
+  background-color: #14a800;
+  color: #fff;
+}
+
+.calendarHeader-button--center:hover {
+  width: 100px;
+  cursor: pointer;
+  border-radius: 16px;
+  padding: 8px 16px;
+  border: 1px solid #fff;
+  background-color: #14a800;
+  color: #fff;
 }

@@ -11,17 +11,27 @@ type CalendarHeaderProps = {
 export function CalendarHeader({ date, setDate }: CalendarHeaderProps) {
   return (
     <div className="calendarHeader">
-      <div>
-        {monthName[date.getMonth()]} {date.getFullYear()}
+      <div className="calendarHeader-label">
+        <div className="calendarHeader--month">
+          {monthName[date.getMonth()]}
+        </div>
+        <div className="calendarHeader--year">{date.getFullYear()}</div>
       </div>
-      <div>
+      <div className="calendarHeader-buttonContainer">
         <button
+          className="calendarHeader-button"
           onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}
         >
           <ArrowBackIosIcon />
         </button>
-        <button onClick={() => setDate(new Date())}>Today</button>
         <button
+          className="calendarHeader-button--center"
+          onClick={() => setDate(new Date())}
+        >
+          Today
+        </button>
+        <button
+          className="calendarHeader-button"
           onClick={() => setDate(new Date(date.setMonth(date.getMonth() + 1)))}
         >
           <ArrowForwardIosIcon />
