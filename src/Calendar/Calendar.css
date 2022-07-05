@@ -41,14 +41,7 @@
   margin-bottom: 16px;
 }
 
-.calendar-day--previous-month {
-  border: 2px dashed #14a800;
-  margin-bottom: 16px;
-  background-color: #e4ebe4;
-  color: #5e6d55;
-}
-
-.calendar-day--next-month {
+.calendar-day--padding-month {
   border: 2px dashed #14a800;
   margin-bottom: 16px;
   background-color: #e4ebe4;

@@ -54,7 +54,7 @@ export function Calendar({ date }: CalendarProps) {
     for (let x = dayIndexActualMonth; x > 0; x -= 1) {
       daysToRender.push(
         <div
-          className="calendar-day--previous-month"
+          className="calendar-day--padding-month"
           key={`${date.getFullYear()}${date.getMonth() - 1}-${
             daysInPreviousMonth - x + 1
           }`}
@@ -131,7 +131,7 @@ export function Calendar({ date }: CalendarProps) {
     for (let x = 1; x <= 7 - lastDayIndexActualMonth - 1; x += 1) {
       daysToRender.push(
         <div
-          className="calendar-day--next-month"
+          className="calendar-day--padding-month"
           key={`${date.getMonth() + 1}-${x}`}
           onClick={() => {
             setSelectedDate(
