@@ -30,19 +30,6 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
     onClose();
   }
 
-  const closeOnEscapeKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Escape") {
-      wrapperOnClose();
-    }
-  };
-
-  useEffect(() => {
-    document.body.addEventListener("keydown", closeOnEscapeKeyDown);
-    return function cleanup() {
-      document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
-    };
-  }, []);
-
   return (
     <Modal
       isOpen={isOpen}
@@ -57,6 +44,7 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
             date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
           })
         );
+        wrapperOnClose();
       }}
     >
       <div className="form">

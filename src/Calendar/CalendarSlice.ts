@@ -27,7 +27,7 @@ const calendarSlice = createSlice({
       const { payload } = action;
       const { date, title, color, description }: PayloadProps = payload;
       state.calendarEvents[date] = [
-        ...state.calendarEvents[date],
+        ...(state.calendarEvents[date] || []),
         {
           color,
           title,
