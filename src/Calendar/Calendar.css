@@ -1,10 +1,10 @@
-.calendarContainer {
+.calendar {
   display: flex;
   flex-wrap: wrap;
   margin-top: 24px;
 }
 
-.weekdays {
+.calendar-weekdays {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -13,11 +13,11 @@
   text-align: end;
 }
 
-.weekdays div {
+.calendar-weekdays div {
   width: calc(100% / 7);
 }
 
-.days {
+.calendar-days {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -27,7 +27,7 @@
   text-align: end;
 }
 
-.days div {
+.calendar-days div {
   width: calc(100% / 7);
   height: 5rem;
 }

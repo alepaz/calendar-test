@@ -101,8 +101,8 @@ export function Calendar({ date }: CalendarProps) {
   }, [date.getMonth(), date.getFullYear()]);
 
   return (
-    <div className="calendarContainer">
-      <div className="weekdays">
+    <div className="calendar">
+      <div className="calendar-weekdays">
         <div>Sun</div>
         <div>Mon</div>
         <div>Tue</div>
@@ -111,7 +111,7 @@ export function Calendar({ date }: CalendarProps) {
         <div>Fri</div>
         <div>Sat</div>
       </div>
-      <div className="days">{days.map((day) => day)}</div>
+      <div className="calendar-days">{days.map((day) => day)}</div>
       <EventForm
         isOpen={showModal}
         onClose={() => setShowModal(false)}
