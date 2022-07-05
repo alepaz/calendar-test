@@ -25,13 +25,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 8px;
   background-color: #f5f5f5;
   text-align: end;
 }
 
 .calendar-days > div {
-  width: calc(100% / 7 - 4px);
+  width: calc(100% / 7 - 20px);
   min-height: 5rem;
   cursor: pointer;
 }
@@ -39,6 +39,7 @@
 .calendar-day {
   border: 2px dashed #14a800;
   margin-bottom: 16px;
+  padding: 8px;
 }
 
 .calendar-day--padding-month {
@@ -46,6 +47,7 @@
   margin-bottom: 16px;
   background-color: #e4ebe4;
   color: #5e6d55;
+  padding: 8px;
 }
 
 .calendar-event {
