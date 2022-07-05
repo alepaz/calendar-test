@@ -31,13 +31,26 @@
 }
 
 .calendar-days div {
-  width: calc(100% / 7);
+  width: calc(100% / 7 - 4px);
   height: 5rem;
   cursor: pointer;
 }
 
 .calendar-day {
   border: 2px dashed #14a800;
-  columns: #001e00;
   margin-bottom: 16px;
+}
+
+.calendar-day--previous-month {
+  border: 2px dashed #14a800;
+  margin-bottom: 16px;
+  background-color: #e4ebe4;
+  color: #5e6d55;
+}
+
+.calendar-day--next-month {
+  border: 2px dashed #14a800;
+  margin-bottom: 16px;
+  background-color: #e4ebe4;
+  color: #5e6d55;
 }

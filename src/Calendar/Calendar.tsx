@@ -54,7 +54,7 @@ export function Calendar({ date }: CalendarProps) {
     for (let x = dayIndexActualMonth; x > 0; x -= 1) {
       daysToRender.push(
         <div
-          className="calendar-day"
+          className="calendar-day--previous-month"
           key={`${date.getFullYear()}${date.getMonth() - 1}-${
             daysInPreviousMonth - x + 1
           }`}
@@ -69,7 +69,12 @@ export function Calendar({ date }: CalendarProps) {
             setShowModal(true);
           }}
         >
-          {daysInPreviousMonth - x + 1}
+          {daysInPreviousMonth - x + 1}{" "}
+          {new Date(
+            date.getFullYear(),
+            date.getMonth() - 1,
+            daysInPreviousMonth - x + 1
+          ).toLocaleString("default", { month: "short" })}
           <div className="calendar-events">
             {calendarEvents[
               `${date.getFullYear()}-${date.getMonth() - 1}-${
@@ -126,7 +131,7 @@ export function Calendar({ date }: CalendarProps) {
     for (let x = 1; x <= 7 - lastDayIndexActualMonth - 1; x += 1) {
       daysToRender.push(
         <div
-          className="calendar-day"
+          className="calendar-day--next-month"
           key={`${date.getMonth() + 1}-${x}`}
           onClick={() => {
             setSelectedDate(
@@ -135,7 +140,11 @@ export function Calendar({ date }: CalendarProps) {
             setShowModal(true);
           }}
         >
-          {x}
+          {x}{" "}
+          {new Date(date.getFullYear(), date.getMonth() + 1, x).toLocaleString(
+            "default",
+            { month: "short" }
+          )}
           <div className="calendar-events">
             {calendarEvents[
               `${date.getFullYear()}-${date.getMonth() + 1}-${x}`
