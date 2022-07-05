@@ -58,7 +58,7 @@ export function Calendar({ date }: CalendarProps) {
   }
 
   // Array of days of the next month
-  for (let x = 1; x <= lastDayIndexActualMonth; x += 1) {
+  for (let x = 1; x <= 7 - lastDayIndexActualMonth - 1; x += 1) {
     days.push(
       <div className="day" key={`${date.getMonth() + 2}-${x}`}>
         {x}
