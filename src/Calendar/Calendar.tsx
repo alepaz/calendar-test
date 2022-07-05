@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import "./Calendar.css";
 
 type CalendarProps = {
@@ -6,56 +6,72 @@ type CalendarProps = {
 };
 
 export function Calendar({ date }: CalendarProps) {
-  const daysInMonth = useMemo(
-    () => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
-    [date.getMonth(), date.getFullYear()]
-  );
+  const days = useMemo(() => {
+    // Represent how many days in a month
+    const daysInMonth = new Date(
+      date.getFullYear(),
+      date.getMonth() + 1,
+      0
+    ).getDate();
 
-  // Index of the first day of the month
-  const dayIndexActualMonth = date.getDay();
-
-  // Index of the last day of the month
-  const lastDayIndexActualMonth = new Date(
-    date.getFullYear(),
-    date.getMonth() + 1,
-    0
-  ).getDay();
-
-  const days = [];
-
-  const daysInPreviousMonth = useMemo(
-    () => new Date(date.getFullYear(), date.getMonth(), 0).getDate(),
-    [date.getMonth(), date.getFullYear()]
-  );
-  // Array of days of the previous month
-  for (let x = dayIndexActualMonth; x > 0; x -= 1) {
-    days.push(
-      <div
-        className="day"
-        key={`${date.getMonth()}-${daysInPreviousMonth - x + 1}`}
-      >
-        {daysInPreviousMonth - x + 1}
-      </div>
+    //Date with the first day of the month
+    const firstDayOfActualMonth = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      1
     );
-  }
 
-  // Array of days of the current month
-  for (let x = 1; x <= daysInMonth; x += 1) {
-    days.push(
-      <div className="day" key={`${date.getMonth() + 1}-${x}`}>
-        {x}
-      </div>
-    );
-  }
+    // Index of the day of the first day of the month
+    const dayIndexActualMonth = firstDayOfActualMonth.getDay();
+    console.log(dayIndexActualMonth);
 
-  // Array of days of the next month
-  for (let x = 1; x <= 7 - lastDayIndexActualMonth - 1; x += 1) {
-    days.push(
-      <div className="day" key={`${date.getMonth() + 2}-${x}`}>
-        {x}
-      </div>
-    );
-  }
+    // Index of the day of the last day of the month
+    const lastDayIndexActualMonth = new Date(
+      date.getFullYear(),
+      date.getMonth() + 1,
+      0
+    ).getDay();
+
+    const daysInPreviousMonth = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      0
+    ).getDate();
+
+    const daysToRender = [];
+
+    // Array of days of the previous month
+    for (let x = dayIndexActualMonth; x > 0; x -= 1) {
+      daysToRender.push(
+        <div
+          className="day"
+          key={`${date.getMonth()}-${daysInPreviousMonth - x + 1}`}
+        >
+          {daysInPreviousMonth - x + 1}
+        </div>
+      );
+    }
+
+    // Array of days of the current month
+    for (let x = 1; x <= daysInMonth; x += 1) {
+      daysToRender.push(
+        <div className="day" key={`${date.getMonth() + 1}-${x}`}>
+          {x}
+        </div>
+      );
+    }
+
+    // Array of days of the next month
+    for (let x = 1; x <= 7 - lastDayIndexActualMonth - 1; x += 1) {
+      daysToRender.push(
+        <div className="day" key={`${date.getMonth() + 2}-${x}`}>
+          {x}
+        </div>
+      );
+    }
+
+    return daysToRender;
+  }, [date.getMonth(), date.getFullYear()]);
 
   return (
     <div className="calendarContainer">
