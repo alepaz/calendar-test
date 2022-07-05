@@ -9,9 +9,16 @@ type ModalProps = {
   header: React.ReactNode | string;
   isOpen: boolean;
   children: React.ReactNode;
+  onSave?: () => void;
 };
 
-export function Modal({ onClose, header, isOpen, children }: ModalProps) {
+export function Modal({
+  onClose,
+  onSave,
+  header,
+  isOpen,
+  children,
+}: ModalProps) {
   const closeOnEscapeKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
       onClose();
@@ -36,10 +43,12 @@ export function Modal({ onClose, header, isOpen, children }: ModalProps) {
             </button>
           </div>
           <div className="modal-body">{children}</div>
-          <div className="modal-footer">
-            <button onClick={onClose}>Cancel</button>
-            <button onClick={onClose}>Save</button>
-          </div>
+          {onSave ? (
+            <div className="modal-footer">
+              <button onClick={onClose}>Cancel</button>
+              <button onClick={onSave}>Save</button>
+            </div>
+          ) : null}
         </div>
       </div>
     </CSSTransition>,

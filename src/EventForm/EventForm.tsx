@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { monthName } from "../utils/utils";
 import { Modal } from "../Modal";
+import { addCalendarEvent } from "../Calendar/CalendarSlice";
+import { useDispatch, useSelector } from "react-redux";
 import "./EventForm.css";
 
 type EventFormProps = {
@@ -10,6 +12,8 @@ type EventFormProps = {
 };
 
 export function EventForm({ onClose, date, isOpen }: EventFormProps) {
+  const dispatch = useDispatch();
+
   //State for input values
   const [title, setTitle] = useState("");
 
@@ -44,6 +48,16 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
       isOpen={isOpen}
       onClose={wrapperOnClose}
       header={`New Event ${monthName[date.getMonth()]} - ${date.getDate()}`}
+      onSave={() => {
+        dispatch(
+          addCalendarEvent({
+            title,
+            color,
+            description,
+            date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+          })
+        );
+      }}
     >
       <div className="form">
         {/* Event Title */}
