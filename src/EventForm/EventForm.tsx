@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { CSSTransition } from "react-transition-group";
 import { monthName } from "../utils/utils";
-import CloseIcon from "@mui/icons-material/Close";
 import { Modal } from "../Modal";
-import "./Event.css";
+import "./EventForm.css";
 
 type EventFormProps = {
   onClose: () => void;
@@ -37,18 +34,18 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
       onClose={onClose}
       header={`New Event ${monthName[date.getMonth()]} - ${date.getDate()}`}
     >
-      <div className="modal-form">
+      <div className="form">
         {/* Event Title */}
-        <div className="modal-form-row">
-          <div className="modal-label">Event:</div>
-          <div className="modal-input">
+        <div className="form-row">
+          <div className="row-label">Event:</div>
+          <div className="row-input">
             <input type="text" name="name" />
           </div>
         </div>
         {/* Event Description */}
-        <div className="modal-form-row">
-          <div className="modal-label">Color:</div>
-          <div className="modal-input">
+        <div className="form-row">
+          <div className="row-label">Color:</div>
+          <div className="row-input">
             <select
               value={color}
               onChange={(e) => {
