@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import { monthName } from "../utils/utils";
 import CloseIcon from "@mui/icons-material/Close";
+import { Modal } from "../Modal";
 import "./Event.css";
 
 type EventFormProps = {
@@ -30,52 +31,37 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
     };
   }, []);
-  return ReactDOM.createPortal(
-    <CSSTransition in={isOpen} unmountOnExit timeout={{ enter: 0, exit: 300 }}>
-      <div className="modal" onClick={onClose}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-header">
-            <h4 className="modal-title">
-              New Event {monthName[date.getMonth()]} - {date.getDate()}
-            </h4>
-            <button onClick={onClose}>
-              <CloseIcon />
-            </button>
+  return (
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      header={`New Event ${monthName[date.getMonth()]} - ${date.getDate()}`}
+    >
+      <div className="modal-form">
+        {/* Event Title */}
+        <div className="modal-form-row">
+          <div className="modal-label">Event:</div>
+          <div className="modal-input">
+            <input type="text" name="name" />
           </div>
-          <div className="modal-body">
-            <div className="modal-form">
-              {/* Event Title */}
-              <div className="modal-form-row">
-                <div className="modal-label">Event:</div>
-                <div className="modal-input">
-                  <input type="text" name="name" />
-                </div>
-              </div>
-              {/* Event Description */}
-              <div className="modal-form-row">
-                <div className="modal-label">Color:</div>
-                <div className="modal-input">
-                  <select
-                    value={color}
-                    onChange={(e) => {
-                      setColor(e.target.value);
-                    }}
-                  >
-                    <option value="#14a800">Green</option>
-                    <option value="#bc511b">Orange</option>
-                    <option value="#001e00">Black</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="modal-footer">
-            <button onClick={onClose}>Cancel</button>
-            <button onClick={onClose}>Save</button>
+        </div>
+        {/* Event Description */}
+        <div className="modal-form-row">
+          <div className="modal-label">Color:</div>
+          <div className="modal-input">
+            <select
+              value={color}
+              onChange={(e) => {
+                setColor(e.target.value);
+              }}
+            >
+              <option value="#14a800">Green</option>
+              <option value="#bc511b">Orange</option>
+              <option value="#001e00">Black</option>
+            </select>
           </div>
         </div>
       </div>
-    </CSSTransition>,
-    document.body
+    </Modal>
   );
 }
