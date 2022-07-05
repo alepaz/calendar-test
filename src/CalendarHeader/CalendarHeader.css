@@ -31,13 +31,13 @@
 }
 
 .calendarHeader-button {
-  width: 52px;
+  width: 48px;
   margin: auto;
   cursor: pointer;
   background-color: #fff;
   border-radius: 50%;
   border: 1px solid #13544e;
-  padding: 8px 16px;
+  padding: 8px 14px;
   color: #14a800;
 }
 
