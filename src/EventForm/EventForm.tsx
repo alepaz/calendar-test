@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
-import "./Event.css";
 import { monthName } from "../utils/utils";
+import CloseIcon from "@mui/icons-material/Close";
+import "./Event.css";
 
 type EventFormProps = {
   onClose: () => void;
@@ -11,8 +12,14 @@ type EventFormProps = {
 };
 
 export function EventForm({ onClose, date, isOpen }: EventFormProps) {
+  //State for input values
+  const [title, setTitle] = useState("");
+
+  //State for color selection
+  const [color, setColor] = useState("#14a800");
+
   const closeOnEscapeKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "27") {
+    if (e.key === "Escape") {
       onClose();
     }
   };
@@ -31,16 +38,44 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
             <h4 className="modal-title">
               New Event {monthName[date.getMonth()]} - {date.getDate()}
             </h4>
-          </div>
-          <div className="modal-body"></div>
-          <div className="modal-footer">
-            <button onClick={onClose} className="button">
-              Close
+            <button onClick={onClose}>
+              <CloseIcon />
             </button>
+          </div>
+          <div className="modal-body">
+            <div className="modal-form">
+              {/* Event Title */}
+              <div className="modal-form-row">
+                <div className="modal-label">Event:</div>
+                <div className="modal-input">
+                  <input type="text" name="name" />
+                </div>
+              </div>
+              {/* Event Description */}
+              <div className="modal-form-row">
+                <div className="modal-label">Color:</div>
+                <div className="modal-input">
+                  <select
+                    value={color}
+                    onChange={(e) => {
+                      setColor(e.target.value);
+                    }}
+                  >
+                    <option value="#14a800">Green</option>
+                    <option value="#bc511b">Orange</option>
+                    <option value="#001e00">Black</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal-footer">
+            <button onClick={onClose}>Cancel</button>
+            <button onClick={onClose}>Save</button>
           </div>
         </div>
       </div>
     </CSSTransition>,
-    document.getElementById("root")!
+    document.body
   );
 }
