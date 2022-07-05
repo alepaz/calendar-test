@@ -11,14 +11,8 @@ export function Calendar({ date }: CalendarProps) {
     [date.getMonth(), date.getFullYear()]
   );
 
-  const test = new Date(date.getFullYear(), date.getMonth(), 1);
-  console.log(test.getDay());
-
-  console.log("daysInMonth", daysInMonth);
-
   // Index of the first day of the month
-  const dayIndexActualMonth = test.getDay();
-  console.log("dayIndexActualMonth", dayIndexActualMonth);
+  const dayIndexActualMonth = date.getDay();
 
   // Index of the last day of the month
   const lastDayIndexActualMonth = new Date(
@@ -26,8 +20,6 @@ export function Calendar({ date }: CalendarProps) {
     date.getMonth() + 1,
     0
   ).getDay();
-
-  console.log("lastDayIndexActualMonth", lastDayIndexActualMonth);
 
   const days = [];
 
@@ -37,7 +29,6 @@ export function Calendar({ date }: CalendarProps) {
   );
   // Array of days of the previous month
   for (let x = dayIndexActualMonth; x > 0; x -= 1) {
-    console.log("TEST", x);
     days.push(
       <div
         className="day"
@@ -65,8 +56,6 @@ export function Calendar({ date }: CalendarProps) {
       </div>
     );
   }
-
-  console.log("days", days);
 
   return (
     <div className="calendarContainer">
