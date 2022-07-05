@@ -83,6 +83,7 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
               }}
             >
               <option value="#14a800">Green</option>
+              <option value="#1f57c3">Blue</option>
               <option value="#bc511b">Orange</option>
               <option value="#001e00">Black</option>
             </select>
