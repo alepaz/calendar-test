@@ -8,8 +8,15 @@ type CalendarEntry = {
   }[];
 };
 
+type PayloadProps = {
+  date: string;
+  title: string;
+  color: string;
+  description: string;
+};
+
 const initialState = {
-  calendarEvents: {} as CalendarEntry ,
+  calendarEvents: {} as CalendarEntry,
 };
 
 const calendarSlice = createSlice({
@@ -18,18 +25,7 @@ const calendarSlice = createSlice({
   reducers: {
     addCalendarEvent: (state, action) => {
       const { payload } = action;
-      console.log("payload", payload);
-      const {
-        date,
-        title,
-        color,
-        description,
-      }: {
-        date: string;
-        title: string;
-        color: string;
-        description: string;
-      } = payload;
+      const { date, title, color, description }: PayloadProps = payload;
       state.calendarEvents[date] = [
         ...state.calendarEvents[date],
         {
