@@ -22,7 +22,7 @@ export function CalendarHeader({ date, setDate }: CalendarHeaderProps) {
           className="calendarHeader-button"
           onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}
         >
-          <ArrowBackIosIcon />
+          <ArrowBackIosIcon className="calendarHeader-icon--left" />
         </button>
         <button
           className="calendarHeader-button--center"

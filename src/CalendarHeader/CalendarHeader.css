@@ -70,3 +70,7 @@
   background-color: #14a800;
   color: #fff;
 }
+
+.calendarHeader-icon--left {
+  margin-left: 2px;
+}
