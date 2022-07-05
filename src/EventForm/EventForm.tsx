@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { monthName } from "../utils/utils";
 import { Modal } from "../Modal";
 import { addCalendarEvent } from "../Calendar/CalendarSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./EventForm.css";
 
 type EventFormProps = {

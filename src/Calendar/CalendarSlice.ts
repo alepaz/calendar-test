@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { StoreType } from "../store/store";
 
-type CalendarEntry = {
+export type CalendarEntry = {
   [key: string]: {
     color: string;
     title: string;
@@ -39,5 +40,8 @@ const calendarSlice = createSlice({
 });
 
 export const { addCalendarEvent } = calendarSlice.actions;
+
+export const getCalendarEvents = (state: StoreType) =>
+  state.calendar.calendarEvents;
 
 export default calendarSlice.reducer;

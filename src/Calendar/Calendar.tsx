@@ -1,6 +1,8 @@
 import { useCallback, useMemo, useState } from "react";
-import "./Calendar.css";
 import { EventForm } from "../EventForm";
+import { useDispatch, useSelector } from "react-redux";
+import { getCalendarEvents, CalendarEntry } from "./CalendarSlice";
+import "./Calendar.css";
 
 type CalendarProps = {
   date: Date;
@@ -11,6 +13,9 @@ export function Calendar({ date }: CalendarProps) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   // Control for the modal
   const [showModal, setShowModal] = useState(false);
+
+  /* Retrieve calendar Events */
+  const calendarEvents = useSelector(getCalendarEvents);
 
   const days = useMemo(() => {
     // Represent how many days in a month
@@ -50,15 +55,38 @@ export function Calendar({ date }: CalendarProps) {
       daysToRender.push(
         <div
           className="day"
-          key={`${date.getMonth()}-${daysInPreviousMonth - x + 1}`}
+          key={`${date.getFullYear()}${date.getMonth() - 1}-${
+            daysInPreviousMonth - x + 1
+          }`}
           onClick={() => {
             setSelectedDate(
-              new Date(date.setDate(daysInPreviousMonth - x + 1))
+              new Date(
+                date.getFullYear(),
+                date.getMonth() - 1,
+                daysInPreviousMonth - x + 1
+              )
             );
             setShowModal(true);
           }}
         >
           {daysInPreviousMonth - x + 1}
+          <div className="calendar-events">
+            {calendarEvents[
+              `${date.getFullYear()}-${date.getMonth() - 1}-${
+                daysInPreviousMonth - x + 1
+              }`
+            ]?.map((event) => {
+              return (
+                <div
+                  className="calendar-event"
+                  style={{ backgroundColor: event.color }}
+                  key={event.title}
+                >
+                  {event.title}
+                </div>
+              );
+            })}
+          </div>
         </div>
       );
     }
@@ -68,13 +96,28 @@ export function Calendar({ date }: CalendarProps) {
       daysToRender.push(
         <div
           className="day"
-          key={`${date.getMonth() + 1}-${x}`}
+          key={`${date.getMonth()}-${x}`}
           onClick={() => {
-            setSelectedDate(new Date(date.setDate(x)));
+            setSelectedDate(new Date(date.getFullYear(), date.getMonth(), x));
             setShowModal(true);
           }}
         >
           {x}
+          <div className="calendar-events">
+            {calendarEvents[
+              `${date.getFullYear()}-${date.getMonth()}-${x}`
+            ]?.map((event) => {
+              return (
+                <div
+                  className="calendar-event"
+                  style={{ backgroundColor: event.color }}
+                  key={event.title}
+                >
+                  {event.title}
+                </div>
+              );
+            })}
+          </div>
         </div>
       );
     }
@@ -84,7 +127,7 @@ export function Calendar({ date }: CalendarProps) {
       daysToRender.push(
         <div
           className="day"
-          key={`${date.getMonth() + 2}-${x}`}
+          key={`${date.getMonth() + 1}-${x}`}
           onClick={() => {
             setSelectedDate(
               new Date(date.getFullYear(), date.getMonth() + 1, x)
@@ -93,12 +136,27 @@ export function Calendar({ date }: CalendarProps) {
           }}
         >
           {x}
+          <div className="calendar-events">
+            {calendarEvents[
+              `${date.getFullYear()}-${date.getMonth() + 1}-${x}`
+            ]?.map((event) => {
+              return (
+                <div
+                  className="calendar-event"
+                  style={{ backgroundColor: event.color }}
+                  key={event.title}
+                >
+                  {event.title}
+                </div>
+              );
+            })}
+          </div>
         </div>
       );
     }
 
     return daysToRender;
-  }, [date.getMonth(), date.getFullYear()]);
+  }, [date.getMonth(), date.getFullYear(), calendarEvents]);
 
   return (
     <div className="calendar">
