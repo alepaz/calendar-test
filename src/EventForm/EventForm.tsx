@@ -16,9 +16,19 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
   //State for color selection
   const [color, setColor] = useState("#14a800");
 
+  //State for event description
+  const [description, setDescription] = useState("");
+
+  function wrapperOnClose() {
+    setTitle("");
+    setColor("#14a800");
+    setDescription("");
+    onClose();
+  }
+
   const closeOnEscapeKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
-      onClose();
+      wrapperOnClose();
     }
   };
 
@@ -28,10 +38,11 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
     };
   }, []);
+
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={wrapperOnClose}
       header={`New Event ${monthName[date.getMonth()]} - ${date.getDate()}`}
     >
       <div className="form">
@@ -39,10 +50,27 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
         <div className="form-row">
           <div className="row-label">Event:</div>
           <div className="row-input">
-            <input type="text" name="name" />
+            <input
+              type="text"
+              name="name"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
         </div>
         {/* Event Description */}
+        <div className="form-row">
+          <div className="row-label">Description:</div>
+          <div className="row-input">
+            <input
+              type="text"
+              name="name"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+        </div>
+        {/* Event Color */}
         <div className="form-row">
           <div className="row-label">Color:</div>
           <div className="row-input">
