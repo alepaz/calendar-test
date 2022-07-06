@@ -4,7 +4,7 @@ import { Calendar } from "Calendar/";
 import "./CalendarView.css";
 
 type CalendarViewProps = {
-  defaultDate: Date;
+  defaultDate?: Date;
 };
 
 export function CalendarView({ defaultDate = new Date() }: CalendarViewProps) {
