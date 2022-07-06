@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { monthName } from "../utils/utils";
 import { Modal } from "../Modal";
 import { addCalendarEvent } from "../Calendar/CalendarSlice";

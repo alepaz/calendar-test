@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { monthName } from "../utils/utils";
 import { CalendarHeader } from "../CalendarHeader";
 import { Calendar } from "Calendar/";
 import "./CalendarView.css";

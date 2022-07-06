@@ -1,4 +1,4 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import CalendarReducer from "../Calendar/CalendarSlice";
 
 const store = configureStore({

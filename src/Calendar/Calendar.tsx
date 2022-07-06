@@ -1,7 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { EventForm } from "../EventForm";
-import { useDispatch, useSelector } from "react-redux";
-import { getCalendarEvents, CalendarEntry } from "./CalendarSlice";
+import { useSelector } from "react-redux";
+import { getCalendarEvents } from "./CalendarSlice";
 import "./Calendar.css";
 
 type CalendarProps = {
