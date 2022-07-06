@@ -68,8 +68,9 @@ export function EventForm({ onClose, date, isOpen, onSave }: EventFormProps) {
           <div className="row-input">
             <input
               className="form-input"
+              aria-label="input-event-title"
               type="text"
-              name="name"
+              name="event-title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -90,7 +91,7 @@ export function EventForm({ onClose, date, isOpen, onSave }: EventFormProps) {
             <input
               className="form-input"
               type="text"
-              name="name"
+              name="event-description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
