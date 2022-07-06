@@ -16,6 +16,7 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
 
   //State for input values
   const [title, setTitle] = useState("");
+  const [titleError, setTitleError] = useState("");
 
   //State for color selection
   const [color, setColor] = useState("#14a800");
@@ -27,6 +28,7 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
     setTitle("");
     setColor("#14a800");
     setDescription("");
+    setTitleError("");
     onClose();
   }
 
@@ -36,6 +38,10 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
       onClose={wrapperOnClose}
       header={`New Event ${monthName[date.getMonth()]} - ${date.getDate()}`}
       onSave={() => {
+        if (title.length === 0) {
+          setTitleError("Title is required");
+          return "";
+        }
         dispatch(
           addCalendarEvent({
             title,
@@ -60,6 +66,14 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
             />
           </div>
         </div>
+
+        {/* Event title Error */}
+        {titleError ? (
+          <div className="form-row--error">
+            <div className="row-label--error">* {titleError}</div>
+          </div>
+        ) : null}
+
         {/* Event Description */}
         <div className="form-row">
           <div className="row-label">Description:</div>
