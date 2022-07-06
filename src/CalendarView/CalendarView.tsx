@@ -3,9 +3,13 @@ import { CalendarHeader } from "../CalendarHeader";
 import { Calendar } from "Calendar/";
 import "./CalendarView.css";
 
-export function CalendarView() {
+type CalendarViewProps = {
+  defaultDate: Date;
+};
+
+export function CalendarView({ defaultDate = new Date() }: CalendarViewProps) {
   //Date to display
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(defaultDate);
 
   return (
     <div className="calendarView">

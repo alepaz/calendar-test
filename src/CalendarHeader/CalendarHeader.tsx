@@ -19,18 +19,21 @@ export function CalendarHeader({ date, setDate }: CalendarHeaderProps) {
       </div>
       <div className="calendarHeader-buttonContainer">
         <button
+          aria-label="previous"
           className="calendarHeader-button"
           onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}
         >
           <ArrowBackIosIcon className="calendarHeader-icon--left" />
         </button>
         <button
+          aria-label="now"
           className="calendarHeader-button--center"
           onClick={() => setDate(new Date())}
         >
           Today
         </button>
         <button
+          aria-label="next"
           className="calendarHeader-button"
           onClick={() => setDate(new Date(date.setMonth(date.getMonth() + 1)))}
         >
