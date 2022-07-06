@@ -100,7 +100,7 @@ export function Calendar({ date }: CalendarProps) {
     for (let x = 1; x <= daysInMonth; x += 1) {
       daysToRender.push(
         <div
-          className="calendar-day"
+          className={`calendar-day${x === date.getDate() ? "--active" : ""}`}
           key={`${date.getMonth()}-${x}`}
           onClick={() => {
             setSelectedDate(new Date(date.getFullYear(), date.getMonth(), x));
@@ -115,7 +115,12 @@ export function Calendar({ date }: CalendarProps) {
               return (
                 <div
                   className="calendar-event"
-                  style={{ backgroundColor: event.color }}
+                  style={{
+                    backgroundColor:
+                      x === date.getDate() && event.color === "#14a800"
+                        ? "#13544e"
+                        : event.color,
+                  }}
                   key={event.title}
                 >
                   {event.title}
