@@ -101,7 +101,9 @@ export function Calendar({ date }: CalendarProps) {
       daysToRender.push(
         <div
           className={`calendar-day${
-            x === date.getDate() && date.getMonth() === new Date().getMonth()
+            x === date.getDate() &&
+            date.getMonth() === new Date().getMonth() &&
+            date.getFullYear() === new Date().getFullYear()
               ? "--active"
               : ""
           }`}
@@ -123,7 +125,8 @@ export function Calendar({ date }: CalendarProps) {
                     backgroundColor:
                       x === date.getDate() &&
                       event.color === "#14a800" &&
-                      date.getMonth() === new Date().getMonth()
+                      date.getMonth() === new Date().getMonth() &&
+                      date.getFullYear() === new Date().getFullYear()
                         ? "#13544e"
                         : event.color,
                   }}
