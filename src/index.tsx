@@ -12,7 +12,7 @@ const root = ReactDOMClient.createRoot(container!);
 
 root.render(
   <React.StrictMode>
-    <Provider data-qatag="provider" store={store}>
+    <Provider store={store}>
       <ThemeProvider theme={themeOptions}>
         <App />
       </ThemeProvider>
