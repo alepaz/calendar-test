@@ -59,7 +59,7 @@
   border-bottom: 1px solid #eee;
 }
 
-.modal-button {
+.modal-button--close {
   background-color: #fff;
   color: #14a800;
   border: 2px solid #14a800;
@@ -69,12 +69,56 @@
   cursor: pointer;
 }
 
-.modal-button:hover {
-  background-color: #14a800;
+.modal-button--close:hover {
+  background-color: #3c8224;
   color: #fff;
   border: 2px solid #fff;
 }
 
 .form-select {
   width: 200px;
+}
+
+/* .modal-button {
+  padding: 12px 32px;
+  border-radius: 32px;
+  font-weight: 600;
+  background-color: #14a800;
+  color: #fff;
+  border: transparent;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  background-color: #3c8224;
+} */
+
+/* .modal-button {
+  padding: 12px 32px;
+  border-radius: 32px;
+  font-weight: 600;
+  background-color: #14a800;
+  color: #fff;
+  border: transparent;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  background-color: #3c8224;
+} */
+
+.modal-button {
+  padding: 12px 32px;
+  border-radius: 32px;
+  font-weight: 600;
+  background-color: #fff;
+  color: #14a800;
+  border: 2px solid #14a800;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  background-color: #3c8224;
+  border: 2px solid #3c8224;
+  color: #fff;
 }
