@@ -38,7 +38,7 @@ export function Modal({
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
           <div className="modal-header">
             <h4 className="modal-title">{header}</h4>
-            <button onClick={onClose}>
+            <button className="modal-button" onClick={onClose}>
               <CloseIcon />
             </button>
           </div>
