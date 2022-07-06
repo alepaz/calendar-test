@@ -38,17 +38,29 @@ export function Modal({
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
           <div className="modal-header">
             <h4 className="modal-title">{header}</h4>
-            <button aria-label="close" className="modal-button--close" onClick={onClose}>
+            <button
+              aria-label="close"
+              className="modal-button--close"
+              onClick={onClose}
+            >
               <CloseIcon />
             </button>
           </div>
           <div className="modal-body">{children}</div>
           {onSave ? (
             <div className="modal-footer">
-              <button className="modal-button" onClick={onClose}>
+              <button
+                aria-label="cancel"
+                className="modal-button"
+                onClick={onClose}
+              >
                 Cancel
               </button>
-              <button className="modal-button" onClick={onSave}>
+              <button
+                aria-label="save"
+                className="modal-button"
+                onClick={onSave}
+              >
                 Save
               </button>
             </div>

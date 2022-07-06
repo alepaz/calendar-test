@@ -6,7 +6,7 @@ test("modal shows the children and a close button", () => {
   const handleClose = jest.fn();
 
   // Act
-  const { getByText, container, getByRole } = render(
+  const { getByText, getByRole } = render(
     <Modal onClose={handleClose} header="this is a test" isOpen>
       <div>test</div>
     </Modal>

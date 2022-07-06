@@ -9,9 +9,10 @@ type EventFormProps = {
   onClose: () => void;
   date: Date;
   isOpen: boolean;
+  onSave?: () => void;
 };
 
-export function EventForm({ onClose, date, isOpen }: EventFormProps) {
+export function EventForm({ onClose, date, isOpen, onSave }: EventFormProps) {
   const dispatch = useDispatch();
 
   //State for input values
@@ -32,26 +33,33 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
     onClose();
   }
 
+  function wrapperOnSave() {
+    if (title.length === 0) {
+      setTitleError("Title is required");
+      return "";
+    }
+
+    if (onSave) {
+      onSave();
+    } else {
+      dispatch(
+        addCalendarEvent({
+          title,
+          color,
+          description,
+          date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+        })
+      );
+      wrapperOnClose();
+    }
+  }
+
   return (
     <Modal
       isOpen={isOpen}
       onClose={wrapperOnClose}
       header={`New Event ${monthName[date.getMonth()]} - ${date.getDate()}`}
-      onSave={() => {
-        if (title.length === 0) {
-          setTitleError("Title is required");
-          return "";
-        }
-        dispatch(
-          addCalendarEvent({
-            title,
-            color,
-            description,
-            date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
-          })
-        );
-        wrapperOnClose();
-      }}
+      onSave={wrapperOnSave}
     >
       <div className="form">
         {/* Event Title */}
