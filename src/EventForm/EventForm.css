@@ -6,5 +6,9 @@
 
 .row-label--error {
   font-size: 14px;
-  color: #D50000;
+  color: #d50000;
+}
+
+.form-input {
+  width: 192px;
 }

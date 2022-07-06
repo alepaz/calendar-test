@@ -59,6 +59,7 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
           <div className="row-label">Event:</div>
           <div className="row-input">
             <input
+              className="form-input"
               type="text"
               name="name"
               value={title}
@@ -79,6 +80,7 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
           <div className="row-label">Description:</div>
           <div className="row-input">
             <input
+              className="form-input"
               type="text"
               name="name"
               value={description}
@@ -91,6 +93,7 @@ export function EventForm({ onClose, date, isOpen }: EventFormProps) {
           <div className="row-label">Color:</div>
           <div className="row-input">
             <select
+              className="form-select"
               value={color}
               onChange={(e) => {
                 setColor(e.target.value);
